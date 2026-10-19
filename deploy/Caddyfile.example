@@ -1,0 +1,4 @@
+# Sustituir el dominio; Caddy gestiona HTTPS al apuntar el DNS a este servidor.
+demo.tu-dominio.com {
+    reverse_proxy 127.0.0.1:8093
+}

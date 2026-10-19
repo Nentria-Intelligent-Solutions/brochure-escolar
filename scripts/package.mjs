@@ -1,0 +1,10 @@
+import { mkdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
+const root = fileURLToPath(new URL('..', import.meta.url));
+mkdirSync(new URL('../artifacts/', import.meta.url), { recursive: true });
+const archive = fileURLToPath(new URL('../artifacts/nenova-servidor.tar.gz', import.meta.url));
+const files = ['dist', 'auth', 'lib', 'scripts', 'tests', 'deploy', 'server.mjs', 'package.json', '.env.example', '.gitignore', '.dockerignore', 'Dockerfile', 'compose.yaml', 'README.md', 'RECURSOS.md'];
+const result = spawnSync('tar', ['-czf', archive, ...files], { cwd: root, stdio: 'inherit', env: { ...process.env, COPYFILE_DISABLE: '1' } });
+if (result.error || result.status !== 0) process.exit(result.status || 1);
+console.log(`Paquete listo: ${archive}\nNo incluye credenciales, Git ni configuración de Sites.`);

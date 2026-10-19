@@ -1,0 +1,22 @@
+# Alternativa a Docker. Crear el usuario de sistema nenova y copiar el proyecto a /opt/nenova-brochure.
+[Unit]
+Description=Presentacion Nenova
+After=network.target
+
+[Service]
+Type=simple
+User=nenova
+Group=nenova
+WorkingDirectory=/opt/nenova-brochure
+Environment=NODE_ENV=production
+Environment=COOKIE_SECURE=true
+EnvironmentFile=/opt/nenova-brochure/.env
+ExecStart=/usr/bin/node /opt/nenova-brochure/server.mjs
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

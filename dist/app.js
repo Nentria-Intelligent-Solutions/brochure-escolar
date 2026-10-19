@@ -75,3 +75,6 @@ const printModules=document.createElement('div');printModules.className='print-m
 const printRoles=document.createElement('div');printRoles.className='print-role-summary';printRoles.innerHTML='<strong>Dirección:</strong> administración, seguimiento de pagos y consulta con IA.<br><strong>Profesores:</strong> grupos, asistencia, captura de notas y trabajo de clase.<br><strong>Alumnos:</strong> materias, calificaciones, asistencia, pagos y entregas.';document.querySelector('.role-layout').after(printRoles);
 $('print-brochure').addEventListener('click',()=>window.print());
 resetState();renderModules();renderAI('grades');renderRole();
+
+// Do not restore a previously authenticated screen from back/forward cache.
+window.addEventListener("pageshow", event => { if (event.persisted) window.location.reload(); });

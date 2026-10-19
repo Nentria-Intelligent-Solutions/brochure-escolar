@@ -1,0 +1,17 @@
+{
+  "name": "nenova-brochure",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Presentación Nenova con acceso independiente y alojamiento propio",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "package": "node scripts/package.mjs",
+    "dev": "node server.mjs"
+  }
+}
