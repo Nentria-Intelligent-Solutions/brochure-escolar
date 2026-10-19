@@ -9,6 +9,7 @@ import { validHash, verifyPassword } from './lib/password.mjs';
 const root = fileURLToPath(new URL('.', import.meta.url));
 const publicFiles = new Map([
   ['/login.css', path.join(root, 'auth/login.css')],
+  ['/login.js', path.join(root, 'auth/login.js')],
   ['/assets/nenova-logo.png', path.join(root, 'dist/assets/nenova-logo.png')],
   ['/favicon.svg', path.join(root, 'dist/favicon.svg')],
 ]);
