@@ -146,7 +146,8 @@ export function createApp(config) {
   server.on('close', () => clearInterval(timer));
   return server;
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+const isMain = !process.argv[1] || import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+if (isMain) {
   try {
     if (existsSync(path.join(root, '.env'))) process.loadEnvFile(path.join(root, '.env'));
     const config = readConfig();
